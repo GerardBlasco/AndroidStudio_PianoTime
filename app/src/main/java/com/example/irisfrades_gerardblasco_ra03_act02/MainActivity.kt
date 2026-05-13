@@ -11,6 +11,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var soundPool: SoundPool
     private var soundMap = mutableMapOf<Int, Int>()
 
+    private var keyId: Int = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -31,6 +33,7 @@ class MainActivity : AppCompatActivity() {
         val key = findViewById<ImageButton>(id)
 
         key.setOnTouchListener { v, event ->
+
             when(event.action){
                 MotionEvent.ACTION_DOWN, MotionEvent.ACTION_MOVE -> {
                     val soundId = soundMap[id]
@@ -41,6 +44,16 @@ class MainActivity : AppCompatActivity() {
             }
             false
         }
+    }
+
+    override fun onTouchEvent(event: MotionEvent): Boolean {
+        val pointerCount = event.pointerCount
+
+        for(i in 0 until pointerCount){
+            
+        }
+
+        return true
     }
 
     override fun onDestroy() {
