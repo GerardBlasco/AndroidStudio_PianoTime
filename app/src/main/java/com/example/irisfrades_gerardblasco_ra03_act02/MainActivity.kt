@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MotionEvent
 import android.widget.ImageButton
+import android.widget.LinearLayout
 
 class MainActivity : AppCompatActivity() {
     private lateinit var soundPool: SoundPool
@@ -54,22 +55,36 @@ class MainActivity : AppCompatActivity() {
 
     override fun onTouchEvent(event: MotionEvent): Boolean {
         val pointerCount = event.pointerCount
-
+        println("TOUCH EVENT")
         for(i in 0 until pointerCount){
             val posX = event.getX(i)
             val posY = event.getY(i)
             val pointerId = event.getPointerId(i)
 
             for(key in keyList){
+                if(isTouchingKey(key, posX, posY)){
+                    val soundId = soundMap[key.id]
 
+                    if(soundId != null){
+                        soundPool.play(soundId, 1f, 1f, 0, 0, 1f)
+                    }
+                }
             }
         }
 
         return true
     }
 
-    fun isTouchingKey(key: ImageButton, posX: Float, posY: Float){
+    fun isTouchingKey(key: ImageButton, posX: Float, posY: Float): Boolean{
+        val keyPosition = IntArray(2)
+        key.getLocationOnScreen(keyPosition)
 
+        val left = keyPosition[0]
+        val right = left + key.width
+        val top = keyPosition[1]
+        val bottom = top + key.height
+
+        return posX > left && posX < right && posY > top && posY < bottom
     }
 
     override fun onDestroy() {
