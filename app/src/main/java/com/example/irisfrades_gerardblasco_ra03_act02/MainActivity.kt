@@ -25,6 +25,7 @@ class MainActivity : AppCompatActivity() {
         keyList.add(findViewById(R.id.a3))
         keyList.add(findViewById(R.id.b3))
 
+        disableKeyInteraction()
 
         soundMap[R.id.c4] = soundPool.load(this, R.raw.faaa, 1)
         soundMap[R.id.a3] = soundPool.load(this, R.raw.faaa, 1)
@@ -52,6 +53,13 @@ class MainActivity : AppCompatActivity() {
             false
         }
     }*/
+
+    fun disableKeyInteraction(){
+        for(key in keyList){
+            key.isClickable = false
+            key.isFocusable = false
+        }
+    }
 
     override fun onTouchEvent(event: MotionEvent): Boolean {
         val pointerCount = event.pointerCount
