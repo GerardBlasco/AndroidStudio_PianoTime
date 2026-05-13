@@ -12,6 +12,7 @@ class MainActivity : AppCompatActivity() {
     private var soundMap = mutableMapOf<Int, Int>()
 
     private var keyId: Int = 0
+    private val keyList = mutableListOf<ImageButton>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,16 +20,21 @@ class MainActivity : AppCompatActivity() {
 
         soundPool = SoundPool.Builder().setMaxStreams(2).build()
 
+        keyList.add(findViewById(R.id.c4))
+        keyList.add(findViewById(R.id.a3))
+        keyList.add(findViewById(R.id.b3))
+
+
         soundMap[R.id.c4] = soundPool.load(this, R.raw.faaa, 1)
         soundMap[R.id.a3] = soundPool.load(this, R.raw.faaa, 1)
         soundMap[R.id.b3] = soundPool.load(this, R.raw.faaa, 1)
 
-        loadKey(R.id.c4)
-        loadKey(R.id.a3)
-        loadKey(R.id.b3)
+        //loadKey(R.id.c4)
+        //loadKey(R.id.a3)
+        //loadKey(R.id.b3)
     }
 
-    @SuppressLint("ClickableViewAccessibility")
+    /*@SuppressLint("ClickableViewAccessibility")
     private fun loadKey(id: Int){
         val key = findViewById<ImageButton>(id)
 
@@ -44,16 +50,26 @@ class MainActivity : AppCompatActivity() {
             }
             false
         }
-    }
+    }*/
 
     override fun onTouchEvent(event: MotionEvent): Boolean {
         val pointerCount = event.pointerCount
 
         for(i in 0 until pointerCount){
-            
+            val posX = event.getX(i)
+            val posY = event.getY(i)
+            val pointerId = event.getPointerId(i)
+
+            for(key in keyList){
+
+            }
         }
 
         return true
+    }
+
+    fun isTouchingKey(key: ImageButton, posX: Float, posY: Float){
+
     }
 
     override fun onDestroy() {
