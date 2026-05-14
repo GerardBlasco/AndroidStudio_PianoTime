@@ -6,6 +6,8 @@ import android.os.Bundle
 import android.view.MotionEvent
 import android.widget.HorizontalScrollView
 import android.widget.ImageButton
+import android.widget.SeekBar
+import androidx.constraintlayout.widget.ConstraintLayout
 
 class MainActivity : AppCompatActivity() {
     private lateinit var soundPool: SoundPool
@@ -13,14 +15,18 @@ class MainActivity : AppCompatActivity() {
 
     private var currentKeyId: Int? = null
     private val keyList = mutableListOf<ImageButton>()
-    private lateinit var horizontalLayout: HorizontalScrollView
+
+    private lateinit var seekBar: SeekBar
+    private lateinit var constraintLayout: ConstraintLayout
+
+    private var lastProgressValue: Float = 0f
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        //horizontalLayout = findViewById(R.id.horizontal_piano_scroll)
-
+        seekBar = findViewById(R.id.seekBar)
+        constraintLayout = findViewById(R.id.constraintLayout)
         soundPool = SoundPool.Builder().setMaxStreams(2).build()
 
         // TECLAS BLANCAS
@@ -82,6 +88,35 @@ class MainActivity : AppCompatActivity() {
         soundMap[R.id.fb3] = soundPool.load(this, R.raw.faaa, 1)
         soundMap[R.id.gb3] = soundPool.load(this, R.raw.faaa, 1)
         soundMap[R.id.ab3] = soundPool.load(this, R.raw.faaa, 1)
+
+        seekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+            // When the progress value has changed
+            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+                // Increment 1 in progress and update the text size
+                /*if(progress.toFloat() > lastProgressValue){
+                    constraintLayout.translationX = constraintLayout.translationX - progress.toFloat()
+                }
+                else if(progress.toFloat() < lastProgressValue){
+                    constraintLayout.translationX = constraintLayout.translationX + progress.toFloat()
+                }
+
+                lastProgressValue = progress.toFloat()
+                constraintLayout.refreshDrawableState()*/
+
+                for(key in keyList){
+                    key.translationX = key.translationX - progress.toFloat()
+                }
+
+            }
+
+            override fun onStartTrackingTouch(seekBar: SeekBar?) {
+                // This method will automatically be called when the user touches the SeekBar
+            }
+
+            override fun onStopTrackingTouch(seekBar: SeekBar?) {
+                // This method will automatically be called when the user stops touching the SeekBar
+            }
+        })
     }
 
     fun disableKeyInteraction(){
