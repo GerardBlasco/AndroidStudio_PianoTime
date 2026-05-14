@@ -28,6 +28,10 @@ class MainActivity : AppCompatActivity() {
         keyList.add(findViewById(R.id.d3))
         keyList.add(findViewById(R.id.c3))
         keyList.add(findViewById(R.id.cb3))
+        keyList.add(findViewById(R.id.db3))
+        keyList.add(findViewById(R.id.fb3))
+        keyList.add(findViewById(R.id.gb3))
+        keyList.add(findViewById(R.id.ab3))
 
         disableKeyInteraction()
 
@@ -40,6 +44,10 @@ class MainActivity : AppCompatActivity() {
         soundMap[R.id.d3] = soundPool.load(this, R.raw.faaa, 1)
         soundMap[R.id.c3] = soundPool.load(this, R.raw.faaa, 1)
         soundMap[R.id.cb3] = soundPool.load(this, R.raw.faaa, 1)
+        soundMap[R.id.db3] = soundPool.load(this, R.raw.faaa, 1)
+        soundMap[R.id.fb3] = soundPool.load(this, R.raw.faaa, 1)
+        soundMap[R.id.gb3] = soundPool.load(this, R.raw.faaa, 1)
+        soundMap[R.id.ab3] = soundPool.load(this, R.raw.faaa, 1)
     }
 
     /*@SuppressLint("ClickableViewAccessibility")
