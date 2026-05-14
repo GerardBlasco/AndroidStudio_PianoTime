@@ -2,42 +2,79 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/piano_layout2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <LinearLayout
-        android:id="@+id/piano_layout"
-        android:layout_width="match_parent"
+    <ImageButton
+        android:id="@+id/c3"
+        android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:orientation="vertical"
+        android:background="@drawable/white_key"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageButton
+        android:id="@+id/d3"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:background="@drawable/white_key"
+        app:layout_constraintStart_toEndOf="@+id/c3" />
+
+    <ImageButton
+        android:id="@+id/e3"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:background="@drawable/white_key"
+        app:layout_constraintStart_toEndOf="@+id/d3" />
+
+    <ImageButton
+        android:id="@+id/f3"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:background="@drawable/white_key"
+        app:layout_constraintStart_toEndOf="@+id/e3" />
+
+    <ImageButton
+        android:id="@+id/g3"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:background="@drawable/white_key"
+        app:layout_constraintStart_toEndOf="@+id/f3" />
+
+    <ImageButton
+        android:id="@+id/a3"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:background="@drawable/white_key"
+        app:layout_constraintStart_toEndOf="@+id/g3" />
+
+    <ImageButton
+        android:id="@+id/b3"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:background="@drawable/white_key"
+        app:layout_constraintStart_toEndOf="@+id/a3"
+        tools:layout_editor_absoluteY="-16dp" />
+
+    <ImageButton
+        android:id="@+id/c4"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:background="@drawable/white_key"
+        app:layout_constraintStart_toEndOf="@+id/b3" />
+
+    <ImageButton
+        android:id="@+id/cb3"
+        android:layout_width="40dp"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="200dp"
+        android:background="@drawable/black_key"
+        android:elevation="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintEnd_toStartOf="@+id/d3"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/c3"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageButton
-            android:id="@+id/c4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/white_key" />
-
-        <ImageButton
-            android:id="@+id/b3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/white_key" />
-
-        <ImageButton
-            android:id="@+id/a3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/white_key" />
-
-        <ImageButton
-            android:id="@+id/g3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/white_key" />
-    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

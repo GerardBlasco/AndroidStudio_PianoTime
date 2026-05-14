@@ -1,18 +1,16 @@
 package com.example.irisfrades_gerardblasco_ra03_act02
 
-import android.annotation.SuppressLint
 import android.media.SoundPool
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MotionEvent
 import android.widget.ImageButton
-import android.widget.LinearLayout
 
 class MainActivity : AppCompatActivity() {
     private lateinit var soundPool: SoundPool
     private var soundMap = mutableMapOf<Int, Int>()
 
-    private var keyId: Int = 0
+    private var currentKeyId: Int? = null
     private val keyList = mutableListOf<ImageButton>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,18 +20,26 @@ class MainActivity : AppCompatActivity() {
         soundPool = SoundPool.Builder().setMaxStreams(2).build()
 
         keyList.add(findViewById(R.id.c4))
-        keyList.add(findViewById(R.id.a3))
         keyList.add(findViewById(R.id.b3))
+        keyList.add(findViewById(R.id.a3))
+        keyList.add(findViewById(R.id.g3))
+        keyList.add(findViewById(R.id.f3))
+        keyList.add(findViewById(R.id.e3))
+        keyList.add(findViewById(R.id.d3))
+        keyList.add(findViewById(R.id.c3))
+        keyList.add(findViewById(R.id.cb3))
 
         disableKeyInteraction()
 
         soundMap[R.id.c4] = soundPool.load(this, R.raw.faaa, 1)
-        soundMap[R.id.a3] = soundPool.load(this, R.raw.faaa, 1)
         soundMap[R.id.b3] = soundPool.load(this, R.raw.faaa, 1)
-
-        //loadKey(R.id.c4)
-        //loadKey(R.id.a3)
-        //loadKey(R.id.b3)
+        soundMap[R.id.a3] = soundPool.load(this, R.raw.faaa, 1)
+        soundMap[R.id.g3] = soundPool.load(this, R.raw.faaa, 1)
+        soundMap[R.id.f3] = soundPool.load(this, R.raw.faaa, 1)
+        soundMap[R.id.e3] = soundPool.load(this, R.raw.faaa, 1)
+        soundMap[R.id.d3] = soundPool.load(this, R.raw.faaa, 1)
+        soundMap[R.id.c3] = soundPool.load(this, R.raw.faaa, 1)
+        soundMap[R.id.cb3] = soundPool.load(this, R.raw.faaa, 1)
     }
 
     /*@SuppressLint("ClickableViewAccessibility")
@@ -63,19 +69,38 @@ class MainActivity : AppCompatActivity() {
 
     override fun onTouchEvent(event: MotionEvent): Boolean {
         val pointerCount = event.pointerCount
-        println("TOUCH EVENT")
+
         for(i in 0 until pointerCount){
             val posX = event.getX(i)
             val posY = event.getY(i)
             val pointerId = event.getPointerId(i)
 
             for(key in keyList){
-                if(isTouchingKey(key, posX, posY)){
+                if(isTouchingKey(key, posX, posY) && currentKeyId != key.id){
+                    currentKeyId = key.id
+
                     val soundId = soundMap[key.id]
 
                     if(soundId != null){
+                        println("TOUCH EVENT")
                         soundPool.play(soundId, 1f, 1f, 0, 0, 1f)
                     }
+                    key.isPressed = true
+                }
+                else if(!isTouchingKey(key, posX, posY) && currentKeyId != key.id){
+                    key.isPressed = false
+                }
+
+                key.refreshDrawableState()
+            }
+
+            when(event.action){
+                MotionEvent.ACTION_UP, MotionEvent.ACTION_CANCEL -> {
+                    for(key in keyList){
+                        key.isPressed = false
+                    }
+
+                    currentKeyId = null
                 }
             }
         }
