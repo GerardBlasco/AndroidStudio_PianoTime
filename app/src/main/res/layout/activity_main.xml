@@ -7,269 +7,274 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <HorizontalScrollView
+    <SeekBar
+        android:id="@+id/seekBar"
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        app:layout_constraintEnd_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/constraintLayout"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="40dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/seekBar">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent">
+        <ImageButton
+            android:id="@+id/c2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/white_key"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <ImageButton
-                android:id="@+id/c2"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:background="@drawable/white_key"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+        <ImageButton
+            android:id="@+id/d2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/white_key"
+            app:layout_constraintStart_toEndOf="@id/c2"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <ImageButton
-                android:id="@+id/d2"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:background="@drawable/white_key"
-                app:layout_constraintStart_toEndOf="@id/c2"
-                app:layout_constraintTop_toTopOf="parent" />
+        <ImageButton
+            android:id="@+id/e2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/white_key"
+            app:layout_constraintStart_toEndOf="@id/d2"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <ImageButton
-                android:id="@+id/e2"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:background="@drawable/white_key"
-                app:layout_constraintStart_toEndOf="@id/d2"
-                app:layout_constraintTop_toTopOf="parent" />
+        <ImageButton
+            android:id="@+id/f2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/white_key"
+            app:layout_constraintStart_toEndOf="@id/e2"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <ImageButton
-                android:id="@+id/f2"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:background="@drawable/white_key"
-                app:layout_constraintStart_toEndOf="@id/e2"
-                app:layout_constraintTop_toTopOf="parent" />
+        <ImageButton
+            android:id="@+id/g2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/white_key"
+            app:layout_constraintStart_toEndOf="@id/f2"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <ImageButton
-                android:id="@+id/g2"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:background="@drawable/white_key"
-                app:layout_constraintStart_toEndOf="@id/f2"
-                app:layout_constraintTop_toTopOf="parent" />
+        <ImageButton
+            android:id="@+id/a2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/white_key"
+            app:layout_constraintStart_toEndOf="@id/g2"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <ImageButton
-                android:id="@+id/a2"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:background="@drawable/white_key"
-                app:layout_constraintStart_toEndOf="@id/g2"
-                app:layout_constraintTop_toTopOf="parent" />
+        <ImageButton
+            android:id="@+id/b2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/white_key"
+            app:layout_constraintStart_toEndOf="@id/a2"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <ImageButton
-                android:id="@+id/b2"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:background="@drawable/white_key"
-                app:layout_constraintStart_toEndOf="@id/a2"
-                app:layout_constraintTop_toTopOf="parent" />
+        <ImageButton
+            android:id="@+id/c3"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/white_key"
+            app:layout_constraintStart_toEndOf="@id/b2"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <ImageButton
-                android:id="@+id/c3"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:background="@drawable/white_key"
-                app:layout_constraintStart_toEndOf="@id/b2"
-                app:layout_constraintTop_toTopOf="parent" />
+        <ImageButton
+            android:id="@+id/d3"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/white_key"
+            app:layout_constraintStart_toEndOf="@+id/c3"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <ImageButton
-                android:id="@+id/d3"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:background="@drawable/white_key"
-                app:layout_constraintStart_toEndOf="@+id/c3"
-                app:layout_constraintTop_toTopOf="parent" />
+        <ImageButton
+            android:id="@+id/e3"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/white_key"
+            app:layout_constraintStart_toEndOf="@+id/d3"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <ImageButton
-                android:id="@+id/e3"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:background="@drawable/white_key"
-                app:layout_constraintStart_toEndOf="@+id/d3"
-                app:layout_constraintTop_toTopOf="parent" />
+        <ImageButton
+            android:id="@+id/f3"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/white_key"
+            app:layout_constraintStart_toEndOf="@+id/e3"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <ImageButton
-                android:id="@+id/f3"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:background="@drawable/white_key"
-                app:layout_constraintStart_toEndOf="@+id/e3"
-                app:layout_constraintTop_toTopOf="parent" />
+        <ImageButton
+            android:id="@+id/g3"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/white_key"
+            app:layout_constraintStart_toEndOf="@+id/f3"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <ImageButton
-                android:id="@+id/g3"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:background="@drawable/white_key"
-                app:layout_constraintStart_toEndOf="@+id/f3"
-                app:layout_constraintTop_toTopOf="parent" />
+        <ImageButton
+            android:id="@+id/a3"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/white_key"
+            app:layout_constraintStart_toEndOf="@+id/g3"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <ImageButton
-                android:id="@+id/a3"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:background="@drawable/white_key"
-                app:layout_constraintStart_toEndOf="@+id/g3"
-                app:layout_constraintTop_toTopOf="parent" />
+        <ImageButton
+            android:id="@+id/b3"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/white_key"
+            app:layout_constraintStart_toEndOf="@+id/a3"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <ImageButton
-                android:id="@+id/b3"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:background="@drawable/white_key"
-                app:layout_constraintStart_toEndOf="@+id/a3"
-                app:layout_constraintTop_toTopOf="parent" />
+        <ImageButton
+            android:id="@+id/c4"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/white_key"
+            app:layout_constraintStart_toEndOf="@+id/b3"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <ImageButton
-                android:id="@+id/c4"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:background="@drawable/white_key"
-                app:layout_constraintStart_toEndOf="@+id/b3"
-                app:layout_constraintTop_toTopOf="parent" />
+        <ImageButton
+            android:id="@+id/cb2"
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="150dp"
+            android:background="@drawable/black_key"
+            android:elevation="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/d2"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/c2"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <ImageButton
-                android:id="@+id/cb2"
-                android:layout_width="40dp"
-                android:layout_height="match_parent"
-                android:layout_marginBottom="200dp"
-                android:background="@drawable/black_key"
-                android:elevation="10dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/d2"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/c2"
-                app:layout_constraintTop_toTopOf="parent" />
+        <ImageButton
+            android:id="@+id/db2"
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="150dp"
+            android:background="@drawable/black_key"
+            android:elevation="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/e2"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/d2"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <ImageButton
-                android:id="@+id/db2"
-                android:layout_width="40dp"
-                android:layout_height="match_parent"
-                android:layout_marginBottom="200dp"
-                android:background="@drawable/black_key"
-                android:elevation="10dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/e2"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/d2"
-                app:layout_constraintTop_toTopOf="parent" />
+        <ImageButton
+            android:id="@+id/fb2"
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="150dp"
+            android:background="@drawable/black_key"
+            android:elevation="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/g2"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/f2"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <ImageButton
-                android:id="@+id/fb2"
-                android:layout_width="40dp"
-                android:layout_height="match_parent"
-                android:layout_marginBottom="200dp"
-                android:background="@drawable/black_key"
-                android:elevation="10dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/g2"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/f2"
-                app:layout_constraintTop_toTopOf="parent" />
+        <ImageButton
+            android:id="@+id/gb2"
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="150dp"
+            android:background="@drawable/black_key"
+            android:elevation="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/a2"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/g2"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <ImageButton
-                android:id="@+id/gb2"
-                android:layout_width="40dp"
-                android:layout_height="match_parent"
-                android:layout_marginBottom="200dp"
-                android:background="@drawable/black_key"
-                android:elevation="10dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/a2"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/g2"
-                app:layout_constraintTop_toTopOf="parent" />
+        <ImageButton
+            android:id="@+id/ab2"
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="150dp"
+            android:background="@drawable/black_key"
+            android:elevation="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/b2"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/a2"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <ImageButton
-                android:id="@+id/ab2"
-                android:layout_width="40dp"
-                android:layout_height="match_parent"
-                android:layout_marginBottom="200dp"
-                android:background="@drawable/black_key"
-                android:elevation="10dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/b2"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/a2"
-                app:layout_constraintTop_toTopOf="parent" />
+        <ImageButton
+            android:id="@+id/cb3"
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="150dp"
+            android:background="@drawable/black_key"
+            android:elevation="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/d3"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/c3"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <ImageButton
-                android:id="@+id/cb3"
-                android:layout_width="40dp"
-                android:layout_height="match_parent"
-                android:layout_marginBottom="200dp"
-                android:background="@drawable/black_key"
-                android:elevation="10dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/d3"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/c3"
-                app:layout_constraintTop_toTopOf="parent" />
+        <ImageButton
+            android:id="@+id/db3"
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="150dp"
+            android:background="@drawable/black_key"
+            android:elevation="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/e3"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/d3"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <ImageButton
-                android:id="@+id/db3"
-                android:layout_width="40dp"
-                android:layout_height="match_parent"
-                android:layout_marginBottom="200dp"
-                android:background="@drawable/black_key"
-                android:elevation="10dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/e3"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/d3"
-                app:layout_constraintTop_toTopOf="parent" />
+        <ImageButton
+            android:id="@+id/fb3"
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="150dp"
+            android:background="@drawable/black_key"
+            android:elevation="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/g3"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/f3"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <ImageButton
-                android:id="@+id/fb3"
-                android:layout_width="40dp"
-                android:layout_height="match_parent"
-                android:layout_marginBottom="200dp"
-                android:background="@drawable/black_key"
-                android:elevation="10dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/g3"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/f3"
-                app:layout_constraintTop_toTopOf="parent" />
+        <ImageButton
+            android:id="@+id/gb3"
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="150dp"
+            android:background="@drawable/black_key"
+            android:elevation="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/a3"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/g3"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <ImageButton
-                android:id="@+id/gb3"
-                android:layout_width="40dp"
-                android:layout_height="match_parent"
-                android:layout_marginBottom="200dp"
-                android:background="@drawable/black_key"
-                android:elevation="10dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/a3"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/g3"
-                app:layout_constraintTop_toTopOf="parent" />
+        <ImageButton
+            android:id="@+id/ab3"
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="150dp"
+            android:background="@drawable/black_key"
+            android:elevation="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/b3"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/a3"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <ImageButton
-                android:id="@+id/ab3"
-                android:layout_width="40dp"
-                android:layout_height="match_parent"
-                android:layout_marginBottom="200dp"
-                android:background="@drawable/black_key"
-                android:elevation="10dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/b3"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/a3"
-                app:layout_constraintTop_toTopOf="parent" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </HorizontalScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

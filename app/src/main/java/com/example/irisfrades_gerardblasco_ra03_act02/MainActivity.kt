@@ -4,6 +4,7 @@ import android.media.SoundPool
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MotionEvent
+import android.widget.HorizontalScrollView
 import android.widget.ImageButton
 
 class MainActivity : AppCompatActivity() {
@@ -12,10 +13,13 @@ class MainActivity : AppCompatActivity() {
 
     private var currentKeyId: Int? = null
     private val keyList = mutableListOf<ImageButton>()
+    private lateinit var horizontalLayout: HorizontalScrollView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        //horizontalLayout = findViewById(R.id.horizontal_piano_scroll)
 
         soundPool = SoundPool.Builder().setMaxStreams(2).build()
 
@@ -80,24 +84,6 @@ class MainActivity : AppCompatActivity() {
         soundMap[R.id.ab3] = soundPool.load(this, R.raw.faaa, 1)
     }
 
-    /*@SuppressLint("ClickableViewAccessibility")
-    private fun loadKey(id: Int){
-        val key = findViewById<ImageButton>(id)
-
-        key.setOnTouchListener { v, event ->
-
-            when(event.action){
-                MotionEvent.ACTION_DOWN, MotionEvent.ACTION_MOVE -> {
-                    val soundId = soundMap[id]
-                    if(soundId != null){
-                        soundPool.play(soundId, 1f, 1f, 0, 0, 1f)
-                    }
-                }
-            }
-            false
-        }
-    }*/
-
     fun disableKeyInteraction(){
         for(key in keyList){
             key.isClickable = false
@@ -106,6 +92,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onTouchEvent(event: MotionEvent): Boolean {
+        println("TOUCH EVENT")
+
         val pointerCount = event.pointerCount
 
         for(i in 0 until pointerCount){
@@ -113,26 +101,28 @@ class MainActivity : AppCompatActivity() {
             val posY = event.getY(i)
             val pointerId = event.getPointerId(i)
 
-            for(key in keyList){
-                if(isTouchingKey(key, posX, posY) && currentKeyId != key.id){
-                    currentKeyId = key.id
-
-                    val soundId = soundMap[key.id]
-
-                    if(soundId != null){
-                        println("TOUCH EVENT")
-                        soundPool.play(soundId, 1f, 1f, 0, 0, 1f)
-                    }
-                    key.isPressed = true
-                }
-                else if(!isTouchingKey(key, posX, posY) && currentKeyId != key.id){
-                    key.isPressed = false
-                }
-
-                key.refreshDrawableState()
-            }
-
             when(event.action){
+                MotionEvent.ACTION_DOWN, MotionEvent.ACTION_MOVE -> {
+                    for(key in keyList){
+                        if(isTouchingKey(key, posX, posY) && currentKeyId != key.id){
+                            currentKeyId = key.id
+
+                            val soundId = soundMap[key.id]
+
+                            if(soundId != null){
+                                println("TOUCH EVENT")
+                                soundPool.play(soundId, 1f, 1f, 0, 0, 1f)
+                            }
+                            key.isPressed = true
+                        }
+                        else if(!isTouchingKey(key, posX, posY) && currentKeyId != key.id){
+                            key.isPressed = false
+                        }
+
+                        key.refreshDrawableState()
+                    }
+                }
+
                 MotionEvent.ACTION_UP, MotionEvent.ACTION_CANCEL -> {
                     for(key in keyList){
                         key.isPressed = false
