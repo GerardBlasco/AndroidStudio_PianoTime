@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var seekBar: SeekBar
     private lateinit var constraintLayout: ConstraintLayout
 
-    private var lastProgressValue: Float = 0f
+    private var maxMovimiento = 0f
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -61,21 +61,21 @@ class MainActivity : AppCompatActivity() {
         disableKeyInteraction()
 
         // TECLAS BLANCAS
-        soundMap[R.id.c2] = soundPool.load(this, R.raw.faaa, 1)
-        soundMap[R.id.d2] = soundPool.load(this, R.raw.faaa, 1)
-        soundMap[R.id.e2] = soundPool.load(this, R.raw.faaa, 1)
-        soundMap[R.id.f2] = soundPool.load(this, R.raw.faaa, 1)
-        soundMap[R.id.g2] = soundPool.load(this, R.raw.faaa, 1)
-        soundMap[R.id.a2] = soundPool.load(this, R.raw.faaa, 1)
-        soundMap[R.id.b2] = soundPool.load(this, R.raw.faaa, 1)
-        soundMap[R.id.c3] = soundPool.load(this, R.raw.faaa, 1)
-        soundMap[R.id.d3] = soundPool.load(this, R.raw.faaa, 1)
-        soundMap[R.id.e3] = soundPool.load(this, R.raw.faaa, 1)
-        soundMap[R.id.f3] = soundPool.load(this, R.raw.faaa, 1)
-        soundMap[R.id.g3] = soundPool.load(this, R.raw.faaa, 1)
-        soundMap[R.id.a3] = soundPool.load(this, R.raw.faaa, 1)
-        soundMap[R.id.b3] = soundPool.load(this, R.raw.faaa, 1)
-        soundMap[R.id.c4] = soundPool.load(this, R.raw.faaa, 1)
+        soundMap[R.id.c2] = soundPool.load(this, R.raw.c2, 1)
+        soundMap[R.id.d2] = soundPool.load(this, R.raw.d2, 1)
+        soundMap[R.id.e2] = soundPool.load(this, R.raw.e2, 1)
+        soundMap[R.id.f2] = soundPool.load(this, R.raw.f2, 1)
+        soundMap[R.id.g2] = soundPool.load(this, R.raw.g2, 1)
+        soundMap[R.id.a2] = soundPool.load(this, R.raw.a2, 1)
+        soundMap[R.id.b2] = soundPool.load(this, R.raw.b2, 1)
+        soundMap[R.id.c3] = soundPool.load(this, R.raw.c3, 1)
+        soundMap[R.id.d3] = soundPool.load(this, R.raw.d3, 1)
+        soundMap[R.id.e3] = soundPool.load(this, R.raw.e3, 1)
+        soundMap[R.id.f3] = soundPool.load(this, R.raw.f3, 1)
+        soundMap[R.id.g3] = soundPool.load(this, R.raw.g3, 1)
+        soundMap[R.id.a3] = soundPool.load(this, R.raw.a3, 1)
+        soundMap[R.id.b3] = soundPool.load(this, R.raw.b3, 1)
+        soundMap[R.id.c4] = soundPool.load(this, R.raw.c4, 1)
 
         // TECLAS NEGRAS
         soundMap[R.id.cb2] = soundPool.load(this, R.raw.faaa, 1)
@@ -89,33 +89,28 @@ class MainActivity : AppCompatActivity() {
         soundMap[R.id.gb3] = soundPool.load(this, R.raw.faaa, 1)
         soundMap[R.id.ab3] = soundPool.load(this, R.raw.faaa, 1)
 
+        constraintLayout.post {
+            maxMovimiento = (constraintLayout.width - seekBar.width).toFloat()
+        }
+
+        var lastProgress = 0
+
         seekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
-            // When the progress value has changed
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
-                // Increment 1 in progress and update the text size
-                /*if(progress.toFloat() > lastProgressValue){
-                    constraintLayout.translationX = constraintLayout.translationX - progress.toFloat()
-                }
-                else if(progress.toFloat() < lastProgressValue){
-                    constraintLayout.translationX = constraintLayout.translationX + progress.toFloat()
-                }
+                val diferencia = progress - lastProgress
 
-                lastProgressValue = progress.toFloat()
-                constraintLayout.refreshDrawableState()*/
-
-                for(key in keyList){
-                    key.translationX = key.translationX - progress.toFloat()
+                if (diferencia > 0) {
+                    constraintLayout.translationX -= diferencia
+                }
+                else if (diferencia < 0) {
+                    constraintLayout.translationX -= diferencia
                 }
 
+                lastProgress = progress
             }
 
-            override fun onStartTrackingTouch(seekBar: SeekBar?) {
-                // This method will automatically be called when the user touches the SeekBar
-            }
-
-            override fun onStopTrackingTouch(seekBar: SeekBar?) {
-                // This method will automatically be called when the user stops touching the SeekBar
-            }
+            override fun onStartTrackingTouch(seekBar: SeekBar?) {}
+            override fun onStopTrackingTouch(seekBar: SeekBar?) {}
         })
     }
 
@@ -127,42 +122,38 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onTouchEvent(event: MotionEvent): Boolean {
-        println("TOUCH EVENT")
-
         val pointerCount = event.pointerCount
 
-        for(i in 0 until pointerCount){
+        for (i in 0 until pointerCount) {
             val posX = event.getX(i)
             val posY = event.getY(i)
             val pointerId = event.getPointerId(i)
 
-            when(event.action){
-                MotionEvent.ACTION_DOWN, MotionEvent.ACTION_MOVE -> {
-                    for(key in keyList){
-                        if(isTouchingKey(key, posX, posY) && currentKeyId != key.id){
-                            currentKeyId = key.id
+            when (event.actionMasked) {
+                MotionEvent.ACTION_DOWN, MotionEvent.ACTION_POINTER_DOWN, MotionEvent.ACTION_MOVE -> {
 
-                            val soundId = soundMap[key.id]
+                    val topKey = findTopKeyByElevation(posX, posY)
 
-                            if(soundId != null){
-                                println("TOUCH EVENT")
-                                soundPool.play(soundId, 1f, 1f, 0, 0, 1f)
-                            }
-                            key.isPressed = true
-                        }
-                        else if(!isTouchingKey(key, posX, posY) && currentKeyId != key.id){
-                            key.isPressed = false
+                    if (topKey != null && currentKeyId != topKey.id) {
+
+                        currentKeyId = topKey.id
+
+                        val soundId = soundMap[topKey.id]
+                        if (soundId != null) {
+                            soundPool.play(soundId, 1f, 1f, 0, 0, 1f)
                         }
 
-                        key.refreshDrawableState()
+                        for (key in keyList) {
+                            key.isPressed = key.id == topKey.id
+                            key.refreshDrawableState()
+                        }
                     }
                 }
 
-                MotionEvent.ACTION_UP, MotionEvent.ACTION_CANCEL -> {
-                    for(key in keyList){
+                MotionEvent.ACTION_UP, MotionEvent.ACTION_POINTER_UP, MotionEvent.ACTION_CANCEL -> {
+                    for (key in keyList) {
                         key.isPressed = false
                     }
-
                     currentKeyId = null
                 }
             }
@@ -186,5 +177,11 @@ class MainActivity : AppCompatActivity() {
     override fun onDestroy() {
         super.onDestroy()
         soundPool.release()
+    }
+
+    fun findTopKeyByElevation(posX: Float, posY: Float): ImageButton? {
+        return keyList
+            .sortedByDescending { it.elevation }   // primero las más altas
+            .firstOrNull { isTouchingKey(it, posX, posY) }
     }
 }
