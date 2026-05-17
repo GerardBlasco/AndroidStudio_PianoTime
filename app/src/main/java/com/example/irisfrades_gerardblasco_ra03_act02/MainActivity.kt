@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
 
         seekBar = findViewById(R.id.seekBar)
         constraintLayout = findViewById(R.id.constraintLayout)
-        soundPool = SoundPool.Builder().setMaxStreams(2).build()
+        soundPool = SoundPool.Builder().setMaxStreams(10).build()
 
         // TECLAS BLANCAS
         keyList.add(findViewById(R.id.c2))
@@ -78,16 +78,16 @@ class MainActivity : AppCompatActivity() {
         soundMap[R.id.c4] = soundPool.load(this, R.raw.c4, 1)
 
         // TECLAS NEGRAS
-        soundMap[R.id.cb2] = soundPool.load(this, R.raw.faaa, 1)
-        soundMap[R.id.db2] = soundPool.load(this, R.raw.faaa, 1)
-        soundMap[R.id.fb2] = soundPool.load(this, R.raw.faaa, 1)
-        soundMap[R.id.gb2] = soundPool.load(this, R.raw.faaa, 1)
-        soundMap[R.id.ab2] = soundPool.load(this, R.raw.faaa, 1)
-        soundMap[R.id.cb3] = soundPool.load(this, R.raw.faaa, 1)
-        soundMap[R.id.db3] = soundPool.load(this, R.raw.faaa, 1)
-        soundMap[R.id.fb3] = soundPool.load(this, R.raw.faaa, 1)
-        soundMap[R.id.gb3] = soundPool.load(this, R.raw.faaa, 1)
-        soundMap[R.id.ab3] = soundPool.load(this, R.raw.faaa, 1)
+        soundMap[R.id.cb2] = soundPool.load(this, R.raw.c2s, 1)
+        soundMap[R.id.db2] = soundPool.load(this, R.raw.d2s, 1)
+        soundMap[R.id.fb2] = soundPool.load(this, R.raw.f2s, 1)
+        soundMap[R.id.gb2] = soundPool.load(this, R.raw.g2s, 1)
+        soundMap[R.id.ab2] = soundPool.load(this, R.raw.a2s, 1)
+        soundMap[R.id.cb3] = soundPool.load(this, R.raw.c3s, 1)
+        soundMap[R.id.db3] = soundPool.load(this, R.raw.d3s, 1)
+        soundMap[R.id.fb3] = soundPool.load(this, R.raw.f3s, 1)
+        soundMap[R.id.gb3] = soundPool.load(this, R.raw.g3s, 1)
+        soundMap[R.id.ab3] = soundPool.load(this, R.raw.a3s, 1)
 
         constraintLayout.post {
             maxMovimiento = (constraintLayout.width - seekBar.width).toFloat()
